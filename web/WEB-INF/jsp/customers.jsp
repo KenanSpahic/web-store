@@ -15,6 +15,8 @@
     <body>
         <h1>Customers</h1>
         <form:form action="customers.htm" method="post" commandName="customer">
+            <form:label path="first_name">Enter your first name:</form:label><br/>
+            <form:input id="first_name" type = "text" path="first_name" placeholder = "Enter your first name..."></form:input><br/>
             
         </form:form>
     </body>
