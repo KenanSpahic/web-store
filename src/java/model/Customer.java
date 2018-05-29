@@ -15,7 +15,7 @@ import java.sql.Statement;
  * @author Kenan
  */
 public class Customer {
-    
+
     private int id;
     private String first_name;
     private String last_name;
@@ -28,7 +28,7 @@ public class Customer {
 
     public String getFirst_name() {
         return first_name;
-    }    
+    }
 
     public String getLast_name() {
         return last_name;
@@ -40,7 +40,7 @@ public class Customer {
 
     public String getEmail() {
         return email;
-    }        
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -62,46 +62,42 @@ public class Customer {
         this.email = email;
     }
 
-    
-    
-    
-    public static String allCustomers() throws ClassNotFoundException{
+    public static String allCustomers() throws ClassNotFoundException {
         StringBuilder all_customers = new StringBuilder();
         Class.forName("com.mysql.jdbc.Driver");
-        try(java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/web_store", "root", "");){
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/web_store", "root", "");) {
             Statement st = conn.createStatement();
             st.executeQuery("select customer_id, first_name, last_name, username, email from customers");
             ResultSet rs = st.getResultSet();
-            
-            while(rs.next()){
-                all_customers.append("customer_id");
-                all_customers.append(" : ");
-                all_customers.append("first_name");
-                all_customers.append(" , ");
-                all_customers.append("last_name");
-                all_customers.append(" , ");
-                all_customers.append("username");
-                all_customers.append(" , ");
-                all_customers.append("email");
+
+            while (rs.next()) {
+                all_customers.append(rs.getString("customer_id"));
+                all_customers.append(" - ");
+                all_customers.append(rs.getString("first_name"));
+                all_customers.append(" - ");
+                all_customers.append(rs.getString("last_name"));
+                all_customers.append(" - ");
+                all_customers.append(rs.getString("username"));
+                all_customers.append(" - ");
+                all_customers.append(rs.getString("email"));
                 all_customers.append("\n");
-            }            
-        }catch (SQLException ex) {
+            }
+        } catch (SQLException ex) {
             all_customers.append(ex.getMessage());
         }
         return all_customers.toString();
     }
-    
-    
-    public void insertCustomer() throws ClassNotFoundException, SQLException{
+
+    public void insertCustomer() throws ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");
-        try(java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/web_store", "root", "");){
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/web_store", "root", "");) {
             if (first_name != null && !(first_name.isEmpty()) && last_name != null && !(last_name.isEmpty()) && username != null && !(username.isEmpty()) && email != null && !(email.isEmpty())) {
                 Statement st = conn.createStatement();
-                st.execute("insert into customers (first_name, last_name, username, email) values ('" + first_name + "','"  + last_name + "','" + username + "','" + email + "')");
+                st.execute("insert into customers (first_name, last_name, username, email) values ('" + first_name + "','" + last_name + "','" + username + "','" + email + "')");
             }
+        }catch(SQLException ex){
+            System.out.println("Error in database connection: \n" + ex.getMessage());
         }
     }
-    
-    
-    
+
 }

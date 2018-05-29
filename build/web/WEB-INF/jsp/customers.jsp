@@ -11,13 +11,64 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customers</title>
+
+        <style>
+            .field
+            {
+                clear:both;
+                padding:5px;
+            }
+
+            .field label
+            {
+                text-align: left;
+                width:100px;
+                float:left;
+            }
+
+            .error
+            {
+                color: red;
+            }
+
+            .custable
+            {
+                border: solid black;
+                border-width: thin;
+            }
+
+
+        </style>
+
     </head>
     <body>
         <h1>Customers</h1>
         <form:form action="customers.htm" method="post" commandName="customer">
-            <form:label path="first_name">Enter your first name:</form:label><br/>
-            <form:input id="first_name" type = "text" path="first_name" placeholder = "Enter your first name..."></form:input><br/>
-            
+            <div class="field">
+                <form:label path="first_name">Enter your first name:</form:label><br/>
+                <form:input id="first_name" type = "text" path="first_name" placeholder = "Enter your first name..."></form:input><br/>
+                </div>
+                <div class="field">
+                <form:label path="last_name">Enter your last name:</form:label><br/>
+                <form:input id="last_name" type = "text" path="last_name" placeholder = "Enter your last name..."></form:input><br/>
+                </div>
+                <div class="field">
+                <form:label path="username">Enter your username:</form:label><br/>
+                <form:input id="username" type = "text" path="username" placeholder = "Enter your username..."></form:input><br/>
+                </div>
+                <div class="field">
+                <form:label path="email">Enter your email address:</form:label><br/>
+                <form:input id="email" type = "text" path="email" placeholder = "Enter your email..."></form:input><br/>
+                </div>
+                <input type="submit" value="Add"/>
         </form:form>
+        <table class="custable">
+            <tr>
+                <th>All customers:</th>
+            </tr>
+            <tr>
+                <td>${customers1}</td>
+            </tr>
+        </table>
     </body>
 </html>
