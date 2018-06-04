@@ -36,10 +36,7 @@
                 border: solid black;
                 border-width: thin;
             }
-
-
         </style>
-
     </head>
     <body>
         <h1>Products</h1>
@@ -51,17 +48,32 @@
                 <div class="field">
                 <form:label path="price">Enter product price:</form:label><br/>
                 <form:input id="price" type = "text" path="price" placeholder = "Enter product price..."></form:input><br/>
-                </div>
+                </div>                
                 <input type="submit" value="Add"/>
         </form:form>
-        <table class="custable">
-            <tr>
-                <th>All products:</th>
-            </tr>
-            <tr>
-                <td>${products1}</td>
-            </tr>
-            <br/>
-        </table>
-    </body>
+<!--        <table class="custable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="prod" items="${products1}">
+                <tr>
+                    <td>${products1}</td>
+                </tr>       
+            </c:forEach>
+        </tbody>
+    </table>-->
+            <table class="custable">
+                <tr>
+                    <th>All products:</th>
+                </tr>
+                <tr>
+                    <td>${products1}</td>
+                </tr>
+            </table>
+</body>
 </html>

@@ -9,6 +9,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -46,9 +48,11 @@ public class Product {
 
     public static String allProducts() throws ClassNotFoundException {
         StringBuilder all_products = new StringBuilder();
+//List<Product> productsList = new ArrayList<Product>();
         Class.forName("com.mysql.jdbc.Driver");
         try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/web_store", "root", "");) {
             Statement st = conn.createStatement();
+//            st.executeQuery("select * from products");
             st.executeQuery("select product_id, name, price from products");
             ResultSet rs = st.getResultSet();
 
@@ -75,4 +79,15 @@ public class Product {
             }
         }
     }
+    
+//        public void deleteProduct() throws ClassNotFoundException, SQLException {
+//        Class.forName("com.mysql.jdbc.Driver");
+//        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/web_store", "root", "");) {
+//            if (name != null && !(name.isEmpty())) {
+//                Statement st = conn.createStatement();
+//                st.execute("insert into products (name, price) values ('" + name + "','" + price + "')");
+//            }
+//        }
+//    }
+    
 }

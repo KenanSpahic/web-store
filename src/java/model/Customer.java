@@ -99,5 +99,16 @@ public class Customer {
             System.out.println("Error in database connection: \n" + ex.getMessage());
         }
     }
+    
+        public void deleteCustomer() throws ClassNotFoundException, SQLException {
+        Class.forName("com.mysql.jdbc.Driver");
+        try (java.sql.Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/web_store", "root", "");) {
+//            if (id != null) {
+                Statement st = conn.createStatement();
+                st.execute("delete from customers where customer_id = '" + id + "'");
+//            }
+        }
+    }
+    
 
 }

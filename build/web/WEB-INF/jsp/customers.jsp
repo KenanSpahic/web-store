@@ -60,11 +60,16 @@
                 <form:label path="email">Enter your email address:</form:label><br/>
                 <form:input id="email" type = "text" path="email" placeholder = "Enter your email..."></form:input><br/>
                 </div>
-                <input type="submit" value="Add"/>
+                <div class="field">
+                <form:label path="id">Enter id for change or delete:</form:label><br/>
+                <form:input id="id" type = "text" path="id" placeholder = "Enter id..."></form:input><br/>
+                </div>                
+                <input type="submit"  name="addBtn" value="Add"/>
+                <input type="submit"  name="deleteBtn" value="Delete" >
         </form:form>
         <table class="custable">
             <tr>
-                <th>All customers:</th>
+                <td>All customers:</td>
             </tr>
             <tr>
                 <td>${customers1}</td>
