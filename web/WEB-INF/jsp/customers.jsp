@@ -67,7 +67,7 @@
                 <input type="submit"  name="addBtn" value="Add"/>
                 <input type="submit"  name="deleteBtn" value="Delete" >
         </form:form>
-        <table class="custable">
+        <table class="custable" border="1">
             <tr>
                 <td>All customers:</td>
             </tr>

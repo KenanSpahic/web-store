@@ -40,10 +40,5 @@ public class CustomerController {
         return "customers";
     }
 
-//        @RequestMapping(value = "/customers", method = RequestMethod.POST)
-//    public String delCustomer(@ModelAttribute("customer") Customer customer, ModelMap model) throws ClassNotFoundException, SQLException{
-//        customer.deleteCustomer();
-//        createForm(model);
-//        return "customers";
-//    }
+
 }
